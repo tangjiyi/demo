@@ -11,7 +11,8 @@ $channel->queue_declare('task_queue', false, true, false, false);
 echo " [*] Waiting for messages. To exit press CTRL+C\n";
 
 $callback = function ($msg) {
-    echo ' [x] Received ', $msg->body, "\n";
+    //echo ' [x] Received ', $msg->body, "\n";
+    echo " [x] Received ", $msg->body, " on ", date('Y-m-d, H:i:s'),"\n";
     sleep(substr_count($msg->body, '.'));
     echo " [x] Done\n";
     $msg->ack();
